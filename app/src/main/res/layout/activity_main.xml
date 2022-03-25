@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:tooltipText="LA LOTERIA"
+    android:padding="30dp"
+    android:layout_width="match_parent"
+    android:background="#ED1197"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LA LOTERIA"
+        android:textSize="40dp"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="23dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnbarajear"
+        android:text="Barajear"/>
+
+    <ImageView
+        android:id="@+id/imagen"
+        android:layout_width="match_parent"
+        android:layout_height="407dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:textSize="20dp"
+       android:text="INICIAR/PAUSAR"
+       android:id="@+id/btn1"
+       />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="VERIFICAR"
+        android:id="@+id/btn2"
+        />
+
+
+</LinearLayout>
