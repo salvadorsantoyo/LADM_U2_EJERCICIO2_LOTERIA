@@ -2,6 +2,7 @@ package com.example.ladm_u2_ejercicio2_loteria
 
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ladm_u2_ejercicio2_loteria.databinding.ActivityMainBinding
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
         var listanum= arrayListOf<Int>()
         var l2=arrayListOf<Int>()
@@ -139,13 +141,21 @@ class MainActivity : AppCompatActivity() {
         fun reproducir(valor: Int){
             var mp = MediaPlayer.create(this,audios[valor])
             mp.start()
+            while(mp.isPlaying())
+            {
+
+
+            }
+            mp.release()
+
 
         }
         fun LanzarCarta(contador:Int)
         {
             binding.imagen.setImageResource(imagenes[listanum[contador]])
             reproducir(listanum[contador])
-            eliminar(contador)
+            //binding.txtcon.setText(contador)
+            //eliminar(contador)
 
         }
         var cadena=""
@@ -159,13 +169,22 @@ class MainActivity : AppCompatActivity() {
 
                         LanzarCarta(contador++)
 
+
                     }
+
                 }
                 delay(2000L)
-                if(contador==53)pausa=true
+                if(contador==53)
+                {
+                    pausa=true
+                    binding.btn1.setVisibility(View.INVISIBLE)
+                    binding.btn2.setVisibility(View.INVISIBLE)
+                }
             }
 
         }
+
+
         binding.btn1.setOnClickListener {
 
             if (objetoCoroutineControlada.isActive){
@@ -204,13 +223,15 @@ class MainActivity : AppCompatActivity() {
         binding.btnbarajear.setOnClickListener {
             listanum.clear()
             generarMazo()
+            contador=0
+            binding.btn1.setVisibility(View.VISIBLE)
+            binding.btn2.setVisibility(View.VISIBLE)
+            //objetoCoroutineControlada.cancel()
         }
 
-        binding.btn2.setOnClickListener {
-            objetoCoroutineControlada.cancel()
-            val hilo=Hilo(binding.imagen,l2)
-        hilo.start()
 
+        binding.btn2.setOnClickListener {
+            pausa=false
         }
 
 
